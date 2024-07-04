@@ -1,4 +1,4 @@
-package chapter2
+package ch2
 
 import org.apache.spark.sql.SparkSession
 import org.apache.spark.sql.functions._
@@ -53,5 +53,4 @@ object MnMCount {
     // Stop the SparkSession
     spark.stop()
   }
-
 }
