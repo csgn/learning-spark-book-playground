@@ -14,6 +14,9 @@ function check_or_download_spark() {
         if [ -f ${SPARK_NAME}.tgz ]; then
             tar -xvf ${SPARK_NAME}.tgz
             if [ -d ${SPARK_NAME} ]; then
+                echo "Setting up Log4j level..."
+                cp ${SPARK_NAME}/conf/log4j2.properties.template ${SPARK_NAME}/conf/log4j2.properties
+                sed -i 's/rootLogger.level = info/rootLogger.level = error/' "${SPARK_NAME}/conf/log4j2.properties"
                 echo "spark-${SPARK_VERSION} downloaded to ${SPARK_HOME} successfully."
             fi
         fi
