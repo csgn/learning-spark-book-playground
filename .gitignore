@@ -33,3 +33,5 @@ metals.sbt
 
 *.tgz
 spark*/
+
+metastore_db
