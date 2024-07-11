@@ -28,7 +28,7 @@ function check_or_download_spark() {
 function run() {
     check_or_download_spark
 
-    $SPARK_HOME/bin/spark-submit \
+    sbt clean package && $SPARK_HOME/bin/spark-submit \
         --deploy-mode client \
         --class ${1}.${2} \
         ${TARGET_PACKAGE} 

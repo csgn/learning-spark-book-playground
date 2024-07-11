@@ -9,7 +9,7 @@ object CommonDs {
 
   def main(args: Array[String]): Unit = {
     val spark = SparkSession.builder
-      .appName("Struct")
+      .appName("CommonDs")
       .getOrCreate()
 
     val sc = spark.sparkContext
