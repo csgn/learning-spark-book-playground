@@ -1,6 +1,6 @@
-{"Id":1, "First": "Jules", "Last":"Damji", "Url":"https://tinyurl.1", "Published":"1/4/2016", "Hits": 4535, "Campaigns": ["twitter", "LinkedIn"]}
-{"Id":2, "First": "Brooke","Last": "Wenig","Url": "https://tinyurl.2", "Published": "5/5/2018", "Hits":8908, "Campaigns": ["twitter", "LinkedIn"]}
-{"Id": 3, "First": "Denny", "Last": "Lee", "Url": "https://tinyurl.3","Published": "6/7/2019","Hits": 7659, "Campaigns": ["web", "twitter", "FB", "LinkedIn"]}
-{"Id": 4, "First":"Tathagata", "Last": "Das","Url": "https://tinyurl.4", "Published": "5/12/2018", "Hits": 10568, "Campaigns": ["twitter", "FB"]}
-{"Id": 5, "First": "Matei","Last": "Zaharia","Url": "https://tinyurl.5", "Published": "5/14/2014", "Hits": 40578, "Campaigns": ["web", "twitter", "FB", "LinkedIn"]}
-{"Id":6,  "First": "Reynold", "Last": "Xin", "Url": "https://tinyurl.6", "Published": "3/2/2015", "Hits": 25568, "Campaigns": ["twitter", "LinkedIn"] }
+{"id":1, "first": "Jules", "last":"Damji", "url":"https://tinyurl.1", "published":"1/4/2016", "hits": 4535, "campaigns": ["twitter", "LinkedIn"]}
+{"id":2, "first": "Brooke","last": "Wenig","url": "https://tinyurl.2", "published": "5/5/2018", "hits":8908, "campaigns": ["twitter", "LinkedIn"]}
+{"id": 3, "first": "Denny", "last": "Lee", "url": "https://tinyurl.3","published": "6/7/2019","hits": 7659, "campaigns": ["web", "twitter", "FB", "LinkedIn"]}
+{"id": 4, "first":"Tathagata", "last": "Das","url": "https://tinyurl.4", "published": "5/12/2018", "hits": 10568, "campaigns": ["twitter", "FB"]}
+{"id": 5, "first": "Matei","last": "Zaharia","url": "https://tinyurl.5", "published": "5/14/2014", "hits": 40578, "campaigns": ["web", "twitter", "FB", "LinkedIn"]}
+{"id":6,  "first": "Reynold", "last": "Xin", "url": "https://tinyurl.6", "published": "3/2/2015", "hits": 25568, "campaigns": ["twitter", "LinkedIn"] }

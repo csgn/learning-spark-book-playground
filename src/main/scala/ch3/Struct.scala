@@ -16,7 +16,7 @@ object Struct {
 
     val sc = spark.sparkContext
 
-    //####################################################
+    // ####################################################
     val data = List(
       ("Brooke", 20),
       ("Denny", 31),
@@ -59,7 +59,7 @@ object Struct {
 
     agesDF.show()
 
-    //####################################################
+    // ####################################################
     // Define Schemas
     // with programatically
     val schema = StructType(
@@ -80,19 +80,19 @@ object Struct {
     // val ddlDF = data2.toDF(ddlSchema)
     // ddlDF.show()
 
-    //####################################################
+    // ####################################################
     // ingest json
     // path data/blogs.json
     val jsonFile = "data/blogs.json"
     val jsonSchema = StructType(
       Array(
-        StructField("Id", IntegerType, false),
-        StructField("First", StringType, false),
-        StructField("Last", StringType, false),
-        StructField("Url", StringType, false),
-        StructField("Published", StringType, false),
-        StructField("Hits", IntegerType, false),
-        StructField("Campaigns", ArrayType(StringType), false)
+        StructField("id", IntegerType, false),
+        StructField("first", StringType, false),
+        StructField("last", StringType, false),
+        StructField("url", StringType, false),
+        StructField("published", StringType, false),
+        StructField("hits", IntegerType, false),
+        StructField("campaigns", ArrayType(StringType), false)
       )
     )
     val blogsDF = spark.read.schema(jsonSchema).json(jsonFile)
@@ -103,31 +103,41 @@ object Struct {
     println(blogsDF.printSchema())
     println(blogsDF.schema)
 
-    //####################################################
+    // ####################################################
     // Columns and Expressions
     println(blogsDF.columns.toList)
-    println(blogsDF.col("Id"))
+    println(blogsDF.col("id"))
 
-    blogsDF.select(expr("Hits * 2").as("doubleHits")).show(2)
-    blogsDF.select((col("Hits") * 2).as("doubleHits")).show(2)
+    blogsDF.select(expr("hits * 2").as("doubleHits")).show(2)
+    blogsDF.select((col("hits") * 2).as("doubleHits")).show(2)
 
-    blogsDF.withColumn("Big Hitters", (expr("Hits > 10000"))).show()
-    blogsDF.withColumn("Big Hitters", col("Hits") > 10000).show()
+    blogsDF.withColumn("Big Hitters", (expr("hits > 10000"))).show()
+    blogsDF.withColumn("Big Hitters", col("hits") > 10000).show()
 
     blogsDF
-      .withColumn("AuthorsId", (concat(expr("First"), expr("Last"), expr("Id"))))
+      .withColumn(
+        "AuthorsId",
+        (concat(expr("first"), expr("last"), expr("id")))
+      )
       .select(col("AuthorsId"))
       .show(4)
 
-    blogsDF.select("Hits").show(2)
+    blogsDF.select("hits").show(2)
 
-    blogsDF.sort(col("Id").desc).show()
-    blogsDF.sort($"Id".desc).show()
+    blogsDF.sort(col("id").desc).show()
+    blogsDF.sort($"id".desc).show()
 
-    //####################################################
+    // ####################################################
     // Rows
-    val blogRow = Row(6, "Reynold", "Xin", "https://tinyurl.6", 255568,
-                      "3/2/2015", Array("twitter", "LinkedIn"))
+    val blogRow = Row(
+      6,
+      "Reynold",
+      "Xin",
+      "https://tinyurl.6",
+      255568,
+      "3/2/2015",
+      Array("twitter", "LinkedIn")
+    )
     println(blogRow(0), blogRow(1))
 
     val rows = Seq(("Matei Zaharia", "CA"), ("Reynold Xin", "CA"))
