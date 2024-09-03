@@ -25,5 +25,38 @@ object ExternalSources {
 
     spark.sql("SELECT id, cubed(id) as id_cubed FROM udf_test").show()
 
+    val s = Seq(
+      (1, Seq(1, 2, 3)),
+      (2, Seq(4, 5, 6))
+    ).toDF("id", "values")
+
+    s.createOrReplaceTempView("table")
+
+    def multiplyN(values: Seq[Int], n: Int): Seq[Int] = {
+      values.map(_ * n)
+    }
+
+    spark.udf.register("multiplyN", multiplyN(_, _))
+
+    spark
+      .sql("""
+      SELECT
+        id, collect_list(value * 2) as values
+      FROM (
+        SELECT
+          id, EXPLODE(values) as value
+        FROM table
+      ) x
+      GROUP BY id
+    """)
+      .show()
+
+    spark
+      .sql("""
+      SELECT
+        id, multiplyN(values, 2) as updated_values
+      FROM table
+    """)
+      .show()
   }
 }
